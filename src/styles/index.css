@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Orbitron", sans-serif;
+  @apply m-0 p-0 box-border text-base;
+}
+
+.App {
+  @apply w-full h-[100dvh] p-8 bg-black grid grid-cols-3 gap-4 max-sm:grid-cols-1 max-sm:h-auto;
+}
+
+.Clock_block {
+  @apply flex justify-center items-center bg-slate-300 rounded-lg hover:bg-slate-100 transition-all;
+}
+
+.Clock_block h1 {
+  @apply text-2xl font-semibold p-4;
+}
+
+.Center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-image: url("https://media.istockphoto.com/id/1305946567/vector/hand-drawn-decorative-clouds-seamless-pattern.jpg?s=612x612&w=0&k=20&c=PSPZREo9GnWNnw0mtnqQhaPuVOlrXyLHrzMr5o4Ui7g=");
+  background-position: center;
+}
+.Center::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
