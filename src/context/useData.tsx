@@ -9,12 +9,14 @@ import {
 const DataContext = createContext<any | undefined>(undefined);
 
 const fetchData = async (city: string) => {
+  const fetchUrl = `https://weather-api-v5aw.onrender.com/weather/${city}`;
   try {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-    );
-    const data = await res.json();
-    return data;
+    const res = await fetch(fetchUrl);
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    return await res.json();
   } catch (e) {
     console.error(e);
   }
@@ -27,7 +29,6 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     fetchData(city)
       .then((fetchedData) => {
-        console.log(fetchedData);
         setData(fetchedData);
       })
       .catch((error) => {
